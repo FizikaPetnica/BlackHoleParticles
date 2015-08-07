@@ -31,7 +31,7 @@ c4x4Matrix c4x4Matrix::AddM(c4x4Matrix A, c4x4Matrix B)
 	return C;
 }
 
-float c4x4Matrix::TProduct(c4Vector A, c4Vector B)
+/*float c4x4Matrix::TProduct(c4Vector A, c4Vector B)
 {
 	float S;
 	for (int i = 0; i < 4; i++)
@@ -43,9 +43,9 @@ float c4x4Matrix::TProduct(c4Vector A, c4Vector B)
 	}
 
 	return S;
-}
+}*/
 
-c4x4Matrix c4x4Matrix::AddMS(double a)
+/*c4x4Matrix c4x4Matrix::AddMS(double a)
 {
 	for (int i = 0; i < 4; i++)
 	{
@@ -87,7 +87,7 @@ c4x4Matrix c4x4Matrix::MultMS(double a)
 			t[i][j] = t[i][j] * a;
 		}
 	}
-}
+}*/
 
 c4x4Matrix::c4x4Matrix()
 {

@@ -2,23 +2,24 @@
 #include "cParticle.h"
 #include <math.h>
 
+const long double G = 6.67384 / pow(10, 11);
+const long double c = 299792458;
 
 void cParticle::Evolve(double dt)
 {
-	long double dTau = dt*ParticleVelocity.Gamma();
-	cCristofell Cristoffel(ParticleEvent);
-	ParcticleAcceleration();
+	long double dTau = dt*sqrt(1 - (2 * G*RestMass / ParticleEvent.x[1]));
+	//cCristofell Cristoffel(ParticleEvent);
 
 
-	c4Vector Cris = Cristoffel.Cristofell(ParticleVelocity);
+	//c4Vector Cris = Cristoffel.Cristofell(ParticleVelocity);
 
-
-	for (int i = 0; i < 4; i++)
-		ParticleEvent.x[i] += ParticleVelocity.x[i] * dTau + (ParcticleAcceleration.x[i] - Cris.x[i]) * dTau*dTau;
+	ParticleEvent.x[0] += dt;
+	//ParticleEvent.x[1] += -sqrt(2 * RestMass*c*c / ParticleEvent.x[1])*(1 - 2 * RestMass / ParticleEvent.x[1])*dTau;
+	ParticleEvent.x[1] += -sqrt(2 * RestMass*c*c / ParticleEvent.x[1]*(1 - 2 * RestMass)) / (ParticleEvent.x[1])*dTau;
 	
 }
 
-float cParticle::Ds2()
+/*float cParticle::Ds2()
 {
 	extern cBlackHole BH;
 	extern double c;
@@ -35,7 +36,7 @@ float cParticle::Ds2()
 
 	return 
 
-}
+}*/
 
 cParticle::cParticle()
 {
